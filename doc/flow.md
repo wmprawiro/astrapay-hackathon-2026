@@ -1,4 +1,4 @@
-# Mermaid Diagrams — AstraPay WhatsApp Commerce
+# Mermaid Diagrams — AstraPay Chat
 
 > Semua diagram di bawah bisa langsung copy-paste ke [mermaid.live](https://mermaid.live)
 > Format: Mermaid.js
@@ -9,7 +9,7 @@
 
 ```mermaid
 flowchart TD
-    START(["🚀 Merchant Baru Mendaftar"]) --> REG["Buka dashboard.astrawhatsapp.com"]
+    START(["🚀 Merchant Baru Mendaftar"]) --> REG["Buka dashboard.astrapaychat.com"]
     REG --> FORM["Isi Form Registrasi:<br/>Nama Toko, Email, Password"]
     FORM --> VERIFY["Verifikasi Email<br/>(klik link di email)"]
     VERIFY --> LOGIN["Login ke Dashboard"]
@@ -111,7 +111,7 @@ sequenceDiagram
     %% ===== PHASE 1: MERCHANT SETUP =====
     rect rgb(255, 243, 224)
     Note over M,DB: PHASE 1 — MERCHANT ONBOARDING & SETUP
-    M->>D: Buka dashboard.astrawhatsapp.com
+    M->>D: Buka dashboard.astrapaychat.com
     M->>D: Register (nama, email, password)
     D->>BE: POST /api/auth/register
     BE->>DB: INSERT merchants
@@ -369,7 +369,7 @@ graph TB
         M[💻 Merchant Dashboard]
     end
 
-    subgraph "☁️ AstraWhatsApp Backend"
+    subgraph "☁️ AstraPay Chat Backend"
         API[🔌 API Gateway]
         BOT[🤖 Bot Engine]
         CAT[📦 Catalog Service]

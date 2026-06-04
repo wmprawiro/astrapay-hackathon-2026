@@ -1,7 +1,7 @@
 # Research: AstraPay Hackathon 2026
 
 > Tanggal: 4 Juni 2026
-> Sumber: [docs.astrapay.com](https://docs.astrapay.com/), [astrapay.com/docs/api](https://www.astrapay.com/docs/api), [astrapay.com](https://www.astrapay.com/)
+> Sumber: [docs.astrapay.com](https://docs.astrapay.com/), [astrapay.com/docs/api](https://www.astrapay.com/docs/api), [astrapay.com](https://www.astrapay.com/), [DataReportal Digital 2026 Indonesia](https://datareportal.com/reports/digital-2026-indonesia), [Katadata Databoks](https://databoks.katadata.co.id/), [GWI](https://www.gwi.com/)
 
 ---
 
@@ -35,7 +35,65 @@
 
 ---
 
-## 2. Ekosistem AstraPay Bisnis
+## 2. Data Pasar Terbaru (2025–2026)
+
+### 2.1 Demografi & Digital Indonesia
+
+| Metrik | Angka | Sumber |
+|--------|-------|--------|
+| **Populasi Indonesia** | **286 juta** (Okt 2025) | UN World Population Prospects via DataReportal Digital 2026 |
+| **Populasi urban** | 60.0% | UN via DataReportal |
+| **Median usia** | 30.4 tahun | UN via DataReportal |
+| **Pengguna internet** | **230 juta** (80.5% penetrasi) | Kepios / DataReportal Digital 2026 |
+| **Pertumbuhan YoY pengguna internet** | +18 juta (+8.7%) | Kepios / DataReportal |
+| **Koneksi mobile** | **331 juta** (116% populasi) | GSMA Intelligence via DataReportal |
+| **Pengguna social media** | **180 juta** (62.9% populasi) | Kepios / DataReportal Digital 2026 |
+| **Pengguna social media 18+** | 180 juta (88.9% populasi 18+) | DataReportal Digital 2026 |
+
+### 2.2 Adopsi Platform di Indonesia (Akhir 2025)
+
+| Platform | Pengguna | Sumber |
+|----------|----------|--------|
+| **TikTok** (18+) | 180 juta | TikTok ad tools via DataReportal |
+| **YouTube** | 151 juta | Google ad tools via DataReportal |
+| **Facebook** | 121 juta | Meta ad tools via DataReportal |
+| **Instagram** | 108 juta | Meta ad tools via DataReportal |
+| **X (Twitter)** | 22.9 juta | X ad tools via DataReportal |
+| **LinkedIn** | 37 juta | LinkedIn ad tools via DataReportal |
+| **Messenger (Meta)** | 33.7 juta | Meta ad tools via DataReportal |
+
+> **Catatan WhatsApp:** Meta tidak mempublikasikan data ad audience untuk WhatsApp. Namun survei GWI Q4 2025 menunjukkan **WhatsApp digunakan oleh 54.4% internet user global usia 16+** dan Similarweb menempatkan WhatsApp sebagai **aplikasi #2 paling banyak dibuka di dunia** (index 87.4, hanya kalah dari YouTube). Di Indonesia, WhatsApp secara luas dikenal sebagai platform komunikasi utama — **estimasi >90% pengguna internet Indonesia menggunakan WhatsApp**.
+
+### 2.3 UMKM di Indonesia (2025)
+
+| Metrik | Angka | Sumber |
+|--------|-------|--------|
+| **Pengusaha UMKM non-pertanian** | **28.98 juta** (per 31 Des 2025) | Kementerian UMKM via Katadata Databoks |
+| **Pertumbuhan YoY** | +19.662 (+0.07%) | Kementerian UMKM via Katadata |
+| **Skala Mikro** | 28.90 juta (99.70%) | Kementerian UMKM via Katadata |
+| **Skala Kecil** | 71.076 | Kementerian UMKM via Katadata |
+| **Skala Menengah** | 14.910 | Kementerian UMKM via Katadata |
+| **Total unit usaha UMKM non-pertanian** | **30.21 juta unit** | Kementerian UMKM via Katadata |
+| **Sektor terbesar** | Perdagangan besar & eceran, reparasi mobil/motor: **14.14 juta unit** | Kementerian UMKM via Katadata |
+| **Jumlah wirausaha RI (awal 2026)** | Bertambah, terbanyak sedekade | Katadata Databoks, 7 Mei 2026 |
+| **Provinsi UMKM terbesar** | Jawa Barat | Kementerian UMKM |
+
+> **Insight:** 99.70% UMKM adalah skala mikro — mayoritas tidak memiliki website/aplikasi sendiri. **14.14 juta UMKM** bergerak di sektor perdagangan + reparasi motor (bonus fokus hackathon).
+
+### 2.4 Conversational Commerce & Tren WhatsApp Business
+
+| Metrik | Angka | Sumber |
+|--------|-------|--------|
+| **WhatsApp Business API adoption** | WhatsApp Business Cloud API diluncurkan 2022, tersedia gratis untuk developer | Meta Developer Docs |
+| **WhatsApp Business app downloads** | >500 juta di Play Store | Google Play Store, 2026 |
+| **Global conversational commerce market** | Diproyeksikan >$13 miliar pada 2026 | Juniper Research, 2023 |
+| **Preferensi komunikasi konsumen Indonesia** | 87% konsumen lebih suka chat dengan bisnis via messaging apps | Meta Business Messaging Report |
+| **Open rate WhatsApp messages** | 98% (vs email ~20%) | Meta Internal Data |
+| **DOKU PayChat (pesaing terdekat)** | Sudah live, 45+ metode bayar, WABA-based | docs.doku.com |
+
+---
+
+## 3. Ekosistem AstraPay Bisnis
 
 ### 2.1 QRIS
 
@@ -66,7 +124,7 @@
 
 ---
 
-### 2.2 Payment Channel
+### 3.2 Payment Channel
 
 **Deskripsi:** Integrasikan pembayaran AstraPay langsung di aplikasi/web merchant. Pelanggan bayar tanpa harus keluar dari aplikasi Anda.
 
@@ -117,7 +175,7 @@
 
 ---
 
-### 2.3 Disbursement
+### 3.3 Disbursement
 
 **Deskripsi:** Kirim dana secara massal ke banyak akun AstraPay sekaligus — hitungan menit.
 
@@ -175,7 +233,7 @@ Signature = HMAC-SHA256(StringToSign, AstraPayValidationKey)
 
 ---
 
-### 2.4 Mitra AstraPay (Segera Hadir)
+### 3.4 Mitra AstraPay (Segera Hadir)
 
 **Deskripsi:** Program afiliasi — jual layanan dan produk digital AstraPay, dapatkan komisi per transaksi.
 
@@ -204,7 +262,7 @@ Signature = HMAC-SHA256(StringToSign, AstraPayValidationKey)
 
 ---
 
-### 2.5 Biller Open API
+### 3.5 Biller Open API
 
 **Deskripsi:** Jual berbagai produk digital langsung di aplikasi Anda melalui API.
 
@@ -245,7 +303,7 @@ Inquiry → Transaksi → Cek Status → Callback
 
 ---
 
-### 2.6 Layanan Tambahan (dari API Docs)
+### 3.6 Layanan Tambahan (dari API Docs)
 
 | Layanan | Deskripsi |
 |---------|-----------|
@@ -256,7 +314,7 @@ Inquiry → Transaksi → Cek Status → Callback
 
 ---
 
-## 3. Flow Bisnis Umum
+## 4. Flow Bisnis Umum
 
 ### Alur Merchant Onboarding
 
@@ -275,7 +333,7 @@ Customer Scan QR / Bayar → Pencatatan Transaksi → Rekonsiliasi Sistem
 
 ---
 
-## 4. Environment & Endpoint
+## 5. Environment & Endpoint
 
 | Environment | Base URL |
 |-------------|----------|
@@ -286,7 +344,7 @@ Customer Scan QR / Bayar → Pencatatan Transaksi → Rekonsiliasi Sistem
 
 ---
 
-## 5. Keamanan API (Ringkasan)
+## 6. Keamanan API (Ringkasan)
 
 ### Payment Channel (Legacy)
 - OAuth2 `client_credentials` → Bearer Token (900 detik)
@@ -306,7 +364,7 @@ Customer Scan QR / Bayar → Pencatatan Transaksi → Rekonsiliasi Sistem
 
 ---
 
-## 6. Benchmark: DOKU PayChat (WhatsApp Commerce)
+## 7. Benchmark: DOKU PayChat (WhatsApp Commerce)
 
 > Sumber: [docs.doku.com](https://docs.doku.com/accept-payments/no-integration-products/paychat), [doku.com/produk](https://www.doku.com/produk/other-products/paychat)
 
@@ -358,11 +416,11 @@ AstraPay memiliki **semua building block** untuk membangun solusi WhatsApp Comme
 
 ---
 
-## 7. Ide Utama Hackathon: "AstraPay WhatsApp Commerce" (PayChat-like)
+## 8. Ide Utama Hackathon: "AstraPay Chat" (PayChat-like)
 
 ### Konsep
 
-**AstraPay WhatsApp Commerce** — solusi UMKM jualan dan terima pembayaran AstraPay langsung di WhatsApp tanpa website, tanpa aplikasi, tanpa integrasi rumit.
+**AstraPay Chat** — solusi UMKM jualan dan terima pembayaran AstraPay langsung di WhatsApp tanpa website, tanpa aplikasi, tanpa integrasi rumit.
 
 ### Arsitektur
 
@@ -373,7 +431,7 @@ AstraPay memiliki **semua building block** untuk membangun solusi WhatsApp Comme
 └──────────────────────┬───────────────────────────────┘
                        │ WhatsApp Business API
 ┌──────────────────────▼───────────────────────────────┐
-│              Backend WhatsApp Commerce                │
+│              Backend AstraPay Chat                │
 │  Chatbot Engine │ Product Catalog │ Order Management │
 └──────┬──────────────────────────────────┬────────────┘
        │                                  │
@@ -429,7 +487,7 @@ AstraPay memiliki **semua building block** untuk membangun solusi WhatsApp Comme
 
 ### Diferensiasi dari DOKU PayChat
 
-| Aspek | DOKU PayChat | AstraPay WhatsApp Commerce |
+| Aspek | DOKU PayChat | AstraPay Chat |
 |-------|-------------|---------------------------|
 | Sumber dana | Kartu kredit, bank transfer, QRIS | Saldo AstraPay + QRIS semua e-wallet |
 | Ekosistem | Payment only | Payment + Disbursement + Biller + Loyalty + Paylater |
@@ -447,7 +505,7 @@ AstraPay memiliki **semua building block** untuk membangun solusi WhatsApp Comme
 
 ---
 
-## 8. Ide Alternatif untuk Hackathon
+## 9. Ide Alternatif untuk Hackathon
 
 ### Alternatif Lain
 
@@ -466,7 +524,7 @@ AstraPay memiliki **semua building block** untuk membangun solusi WhatsApp Comme
 
 ---
 
-## 9. Checklist Pendaftaran
+## 10. Checklist Pendaftaran
 
 - [ ] Bentuk tim (maks 4 orang)
 - [ ] Tentukan ide inovatif sesuai tema

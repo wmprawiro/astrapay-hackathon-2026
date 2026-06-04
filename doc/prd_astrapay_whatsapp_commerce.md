@@ -1,14 +1,14 @@
-# PRD: AstraPay WhatsApp Commerce
+# PRD: AstraPay Chat
 
 > **Product Requirements Document**
 > Hackathon AstraPay 2026 — "Product Innovation Integrated with AstraPay Ecosystem"
-> Version 1.0 — 4 Juni 2026
+> Version 1.1 — 4 Juni 2026 (updated with 2025-2026 market data)
 
 ---
 
 ## 1. Executive Summary
 
-**AstraPay WhatsApp Commerce** adalah solusi all-in-one yang memungkinkan merchant (UMKM, bengkel motor, warung, toko kelontong) untuk **menjual produk, menerima pesanan, dan menerima pembayaran AstraPay langsung di WhatsApp** — tanpa perlu website, tanpa aplikasi, dan tanpa integrasi teknis.
+**AstraPay Chat** adalah solusi all-in-one yang memungkinkan merchant (UMKM, bengkel motor, warung, toko kelontong) untuk **menjual produk, menerima pesanan, dan menerima pembayaran AstraPay langsung di WhatsApp** — tanpa perlu website, tanpa aplikasi, dan tanpa integrasi teknis.
 
 Pelanggan cukup chat, pilih produk, dan bayar dalam satu alur di WhatsApp yang sudah mereka gunakan sehari-hari.
 
@@ -18,10 +18,11 @@ Pelanggan cukup chat, pilih produk, dan bayar dalam satu alur di WhatsApp yang s
 
 ### 2.1 Masalah
 
-- **64 juta UMKM** di Indonesia, namun kurang dari 20% yang sudah terdigitalisasi
-- UMKM kesulitan membangun website/aplikasi sendiri karena biaya dan keahlian teknis
-- Pelanggan enggan download aplikasi baru atau pindah channel untuk bayar
-- WhatsApp adalah "super-app" de facto Indonesia — 90%+ pengguna internet menggunakannya
+- **30.21 juta unit UMKM non-pertanian** di Indonesia per 2025, **99.70% skala mikro** (Kementerian UMKM via Katadata, April 2026)
+- **14.14 juta UMKM** bergerak di sektor perdagangan + reparasi motor — fokus bonus hackathon (Kementerian UMKM via Katadata)
+- Mayoritas UMKM belum terdigitalisasi — tidak punya website, aplikasi, atau sistem point-of-sale
+- **230 juta pengguna internet** di Indonesia (80.5% penetrasi), **180 juta pengguna social media** (DataReportal Digital 2026)
+- WhatsApp adalah aplikasi komunikasi #1 di Indonesia — **estimasi >90% pengguna internet** memakainya
 - Proses jual-beli via WhatsApp saat ini manual: chat, catat pesanan di kertas, minta transfer, cek bukti manual → lambat, rawan error, tidak scalable
 
 ### 2.2 Pain Points
@@ -247,7 +248,7 @@ Sebuah chatbot WhatsApp yang terhubung ke ekosistem AstraPay:
 ### 7.2 Flow: Merchant Setup (First Time)
 
 ```
-1. Merchant daftar di dashboard.astrawhatsapp.com
+1. Merchant daftar di dashboard.astrapaychat.com
 2. Verifikasi nomor WhatsApp bisnis
 3. Masuk ke dashboard → "Buat Toko Baru"
 4. Isi nama toko, kategori, jam operasional

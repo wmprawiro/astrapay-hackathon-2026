@@ -1,4 +1,4 @@
-# Slide Deck Proposal — AstraPay WhatsApp Commerce
+# Slide Deck Proposal — AstraPay Chat
 
 > Hackathon AstraPay 2026 — "Product Innovation Integrated with AstraPay Ecosystem"
 > Format: Google Slides (16:9) → Export PDF untuk submission
@@ -37,7 +37,7 @@
 
 **Teks untuk dimasukkan (Title & Subtitle):**
 
-> **Title:** AstraPay WhatsApp Commerce
+> **Title:** AstraPay Chat
 > **Subtitle:** Jualan di WhatsApp. Bayar pakai AstraPay. Tanpa Website. Tanpa Ribet.
 > **Bottom:** Hackathon AstraPay 2026 | Tim [Nama] | Juni 2026
 
@@ -55,21 +55,22 @@
 ```
 ┌──────────────────────────────────────────────────────────┐
 │                                                          │
-│   MASALAH: 64 JUTA UMKM MASIH BERJUANG SECARA MANUAL     │
+│   MASALAH: 30.2 JUTA UMKM MASIH BERJUANG SECARA MANUAL    │
 │                                                          │
 │   ┌─────────────────────┐   ┌──────────────────────────┐ │
 │   │                     │   │                          │ │
-│   │    64 JUTA          │   │  "Saya jualan di WA,     │ │
-│   │    UMKM di          │   │   catat pesanan di buku, │ │
-│   │    Indonesia        │   │   minta transfer manual. │ │
-│   │                     │   │   Kadang pesanan hilang,  │ │
-│   │    < 20%            │   │   kadang pembeli kabur."  │ │
-│   │    yang sudah       │   │                          │ │
-│   │    terdigitalisasi  │   │   — Bu Rina, Pemilik     │ │
-│   │                     │   │     Warung Sembako       │ │
-│   │    90%+             │   │                          │ │
-│   │    pengguna internet│   │                          │ │
-│   │    pakai WhatsApp   │   │                          │ │
+│   │    30.21 JUTA      │   │  "Saya jualan di WA,      │   │
+│   │    unit UMKM non-   │   │   catat pesanan di buku,  │   │
+│   │    pertanian di     │   │   minta transfer manual.  │   │
+│   │    Indonesia        │   │   Kadang pesanan hilang,  │   │
+│   │                     │   │   kadang pembeli kabur."  │   │
+│   │    99.70%           │   │                           │   │
+│   │    adalah skala     │   │   — Bu Rina, Pemilik      │   │
+│   │    mikro            │   │     Warung Sembako        │   │
+│   │                     │   │                           │   │
+│   │    >90%             │   │                           │   │
+│   │    pengguna internet│   │                           │   │
+│   │    pakai WhatsApp   │   │                           │   │
 │   │                     │   │                          │ │
 │   └─────────────────────┘   └──────────────────────────┘ │
 │                                                          │
@@ -81,12 +82,12 @@
 
 **Teks untuk dimasukkan:**
 
-> **Header:** Masalah: 64 Juta UMKM Masih Berjuang Secara Manual
+> **Header:** Masalah: 30.2 Juta UMKM Masih Berjuang Secara Manual
 
 **Kolom Kiri — 3 Statistik Besar:**
-- **64 Juta** UMKM di Indonesia
-- **< 20%** yang sudah terdigitalisasi  
-- **90%+** pengguna internet pakai WhatsApp
+- **30.21 Juta** unit UMKM non-pertanian di Indonesia
+- **99.70%** adalah skala mikro — tidak punya website/aplikasi
+- **>90%** pengguna internet pakai WhatsApp
 
 **Kolom Kanan — Quote:**
 > *"Saya jualan di WhatsApp, catat pesanan di buku, minta transfer manual. Kadang pesanan hilang, kadang pembeli kabur."*
@@ -199,7 +200,7 @@
 
 **Teks untuk dimasukkan:**
 
-> **Header:** Solusi: AstraPay WhatsApp Commerce
+> **Header:** Solusi: AstraPay Chat
 
 **Hero Banner:**
 > *"WhatsApp-mu sekarang bisa jadi toko online + mesin kasir digital."*
@@ -595,8 +596,8 @@
 │   │                     │                  │          │   │
 │   │  ✅ Setup <10 menit │ ✅ Akuisisi      │ ✅ Belanja│   │
 │   │     tanpa coding    │    merchant baru │    di WA  │   │
-│   │                     │    dari 64jt     │    sehari-│   │
-│   │  ✅ Terima bayaran  │    UMKM          │    hari   │   │
+│   │                     │    dari 30.2jt    │    sehari-│   │
+│   │  ✅ Terima bayaran  │    UMKM           │    hari   │   │
 │   │     digital tanpa   │                  │          │   │
 │   │     mesin EDC       │ ✅ Volume        │ ✅ Bayar  │   │
 │   │                     │    transaksi     │    Astra  │   │
@@ -617,7 +618,7 @@
 │                                                          │
 │   ⭐ DIFERENSIASI DARI DOKU PAYCHAT:                      │
 │   ┌──────────────────┬────────────────────────────────┐   │
-│   │ DOKU PayChat     │ AstraPay WhatsApp Commerce     │   │
+│   │ DOKU PayChat     │ AstraPay Chat     │   │
 │   │──────────────────│────────────────────────────────│   │
 │   │ Payment only     │ Payment + QRIS + Biller +      │   │
 │   │                  │ Disbursement + Loyalty +       │   │
@@ -639,7 +640,7 @@
 
 | Bagi UMKM | Bagi AstraPay | Bagi Pelanggan |
 |-----------|---------------|----------------|
-| ✅ Setup < 10 menit tanpa coding | ✅ Akuisisi merchant baru dari 64 juta UMKM | ✅ Belanja di WhatsApp sehari-hari |
+| ✅ Setup < 10 menit tanpa coding | ✅ Akuisisi merchant baru dari 30.2 juta UMKM | ✅ Belanja di WhatsApp sehari-hari |
 | ✅ Terima bayaran digital tanpa EDC | ✅ Volume transaksi baru dari kanal WA commerce | ✅ Bayar pakai AstraPay saldo atau QRIS |
 | ✅ Order otomatis tercatat — tidak hilang | ✅ Diferensiasi dari GoPay/OVO/Dana — belum ada yang punya solusi ini | ✅ Notifikasi real-time — tenang |
 | ✅ Dana cair H+1 — cash flow lancar | ✅ Adopsi penuh ekosistem AstraPay: Payment + QRIS + Biller + Disbursement + Loyalty | ✅ Tidak was-was transfer manual |
@@ -647,7 +648,7 @@
 
 **Diferensiasi vs DOKU PayChat:**
 
-| DOKU PayChat | AstraPay WhatsApp Commerce |
+| DOKU PayChat | AstraPay Chat |
 |--------------|---------------------------|
 | Payment only | Payment + QRIS + Biller + Disbursement + Loyalty + Paylater |
 | Sumber dana: kartu kredit, bank transfer | Sumber dana: Saldo AstraPay + QRIS (semua e-wallet & m-banking) |
@@ -776,11 +777,12 @@
 
 **Teks untuk dimasukkan:**
 
-> **Judul Besar:** AstraPay WhatsApp Commerce
+> **Judul Besar:** AstraPay Chat
 > **Quote:** *"Jualan di WhatsApp. Bayar pakai AstraPay. Tanpa Website. Tanpa Ribet."*
 > **Info:**
 > - Repository: github.com/wmprawiro/astrapay-hackathon-2026
 > - Kontak: [isi]
+> - Sumber data: DataReportal Digital 2026, Kementerian UMKM via Katadata Databoks, GWI Q4 2025
 > - QR Code ke repository (generate via QR code generator)
 
 ---
