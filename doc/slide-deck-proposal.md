@@ -14,7 +14,7 @@
 │                                                          │
 │                    🟣 AstraPay                           │
 │                                                          │
-│           ASTRA PAY WHATSAPP COMMERCE                    │
+│                    ASTRA PAY CHAT                        │
 │           ───────────────────────────                    │
 │           Jualan di WhatsApp.                            │
 │           Bayar Pakai AstraPay.                          │
@@ -165,7 +165,7 @@
 ```
 ┌──────────────────────────────────────────────────────────┐
 │                                                          │
-│   SOLUSI: ASTRA PAY WHATSAPP COMMERCE                    │
+│   SOLUSI: ASTRA PAY CHAT                                 │
 │                                                          │
 │   ┌──────────────────────────────────────────────────┐   │
 │   │  "WhatsApp-mu sekarang bisa jadi toko online     │   │
@@ -753,7 +753,7 @@
 ┌──────────────────────────────────────────────────────────┐
 │                                                          │
 │                                                          │
-│               🟣 ASTRA PAY WHATSAPP COMMERCE             │
+│               🟣 ASTRA PAY CHAT                           │
 │                                                          │
 │               "Jualan di WhatsApp.                       │
 │                Bayar pakai AstraPay.                     │
