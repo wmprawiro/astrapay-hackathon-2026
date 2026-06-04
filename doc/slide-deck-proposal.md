@@ -42,41 +42,29 @@
 
 ```
 HEADER:
-Indonesian MSMEs Are Stuck in Manual Mode
+MSMEs Sell on WhatsApp — But the Money Flow Is Broken
 
-LEFT — THE REALITY:
-┌─────────────────────────┐
-│                         │
-│  "I sell through WA.    │
-│   I write orders in a   │
-│   notebook. I ask for   │
-│   manual bank transfer. │
-│   Orders get lost.      │
-│   Customers ghost me."  │
-│                         │
-│   — Ibu Rina, Grocery   │
-│     Shop Owner          │
-└─────────────────────────┘
+┌─────────────────────────────┐   ┌─────────────────────────────┐
+│                             │   │                             │
+│  "Saya jualan di WA.         │   │  THE REALITY:              │
+│   Catat pesanan di buku.     │   │                             │
+│   Minta transfer manual.     │   │  WhatsApp = Indonesia's     │
+│   Bukti transfer harus       │   │  #1 commerce channel        │
+│   dicek satu-satu.           │   │                             │
+│   Kadang pesanan hilang.     │   │  30M+ MSMEs                 │
+│   Kadang pembeli kabur."     │   │  230M internet users        │
+│                             │   │  >90% on WhatsApp            │
+│   — Ibu Rina,               │   │                             │
+│     Warung Sembako          │   │  But payments are:          │
+│                             │   │  MANUAL   SLOW   UNTRACKED  │
+└─────────────────────────────┘   └─────────────────────────────┘
 
-RIGHT — THE GAP:
-┌───────────────────────────────────────┐
-│                                       │
-│  WhatsApp = Indonesia's super-app     │
-│  230M internet users, >90% on WA      │
-│  30M+ MSMEs, 99.7% micro-scale        │
-│                                       │
-│  BUT:                                 │
-│  CHAT → MANUAL NOTES → BANK TRANSFER  │
-│  → MANUAL VERIFICATION                │
-│                                       │
-│  Slow. Error-prone. Can't scale.      │
-└───────────────────────────────────────┘
-
-BOTTOM LINE:
-⚠️ Indonesia's largest commerce platform (WhatsApp) has ZERO payment integration.
+BOTTOM:
+WhatsApp commerce tools exist. But for AstraPay's ecosystem? Nothing.
+MSMEs in the motorcycle sector? Nothing.
 ```
 
-**Design:** Left = big italic quote + persona photo. Right = 3 stats + broken flow.
+**Design:** Left = big quote + photo. Right = stats + broken payment arrow graphic.
 
 ---
 
@@ -365,49 +353,58 @@ Deploy:   Docker + Cloud Run
 HEADER:
 What Makes AstraPay Chat Different
 
+THE LANDSCAPE:
+┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│  WhatsApp Commerce in Indonesia today:                       │
+│                                                              │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐ │
+│  │ Conversation    │  │ Payment-enabled │  │ AstraPay Chat │ │
+│  │ Tools            │  │ Commerce         │  │ (THIS PROJECT)│ │
+│  │                 │  │                 │  │              │ │
+│  │ WATI, Qiscus,   │  │ DOKU PayChat    │  │ ✅ Deep      │ │
+│  │ ManyChat,       │  │ — bundles       │  │    AstraPay  │ │
+│  │ Kata.ai         │  │ general payment │  │    native    │ │
+│  │                 │  │ methods         │  │ ✅ Full      │ │
+│  │ Chat management │  │                 │  │    ecosystem │ │
+│  │ No built-in     │  │ AstraPay?       │  │ ✅ MSME +    │ │
+│  │ payment         │  │ One of 45+.     │  │    motorcycle│ │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘ │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
 5 UNFAIR ADVANTAGES:
 
-┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐
-│ ① ZERO FRICTION   │  │ ② ASTRA PAY       │  │ ③ FULL ECOSYSTEM  │
-│                   │  │    ECOSYSTEM       │  │                   │
-│ No app install.   │  │ Push to Payment +  │  │ Payment + QRIS +  │
-│ No website.       │  │ QRIS all e-wallets │  │ Biller + Disburse │
-│ Setup in <10 min. │  │ + mobile banking.  │  │ ment + Loyalty +  │
-│ Chat = Store.     │  │ H+1 settlement.    │  │ Paylater.         │
-└───────────────────┘  └───────────────────┘  └───────────────────┘
+┌────────────────────────┐  ┌────────────────────────┐  ┌────────────────────────┐
+│ ① ASTRA PAY NATIVE     │  │ ② FULL ECOSYSTEM        │  │ ③ ZERO FRICTION        │
+│                        │  │                         │  │                        │
+│ Push to Payment —      │  │ Payment + QRIS + Biller │  │ No app install.        │
+│ just HP number + PIN.  │  │ + Disbursement +        │  │ Setup in <10 min.      │
+│ No account linking.    │  │ Loyalty + Paylater.     │  │ Chat = your store.     │
+│ H+1 settlement.        │  │ All from one product.   │  │                        │
+└────────────────────────┘  └────────────────────────┘  └────────────────────────┘
 
-┌───────────────────┐  ┌───────────────────┐
-│ ④ WEBVIEW MAGIC   │  │ ⑤ UNFAIR EDGE     │
-│                   │  │                   │
-│ Detect if AstraPay │  │ DOKU PayChat does │
-│ app installed.    │  │ general payments.  │
-│ Yes → open app.   │  │ We do AstraPay     │
-│ No → stay in web. │  │ ecosystem + MSME  │
-│ Register inline.  │  │ + motor focus.    │
-└───────────────────┘  └───────────────────┘
-
-VS DOKU PAYCHAT:
-┌────────────────────┬──────────────────────────┐
-│ DOKU PayChat       │ AstraPay Chat             │
-├────────────────────┼──────────────────────────┤
-│ Payment only       │ Payment + QRIS + Biller   │
-│                    │ + Disbursement + Loyalty  │
-│ Credit card, bank  │ AstraPay balance + QRIS   │
-│ transfer only      │ (all e-wallets)           │
-│ No loyalty rewards │ AstraPoints for customers │
-│ General MSME       │ MSME + motorcycle focus   │
-└────────────────────┴──────────────────────────┘
+┌────────────────────────┐  ┌────────────────────────┐
+│ ④ WEBVIEW MAGIC        │  │ ⑤ MSME + MOTOR FOCUS   │
+│                        │  │                        │
+│ Detect if AstraPay app │  │ Built for micro-scale   │
+│ installed. If not?     │  │ merchants. Bonus:       │
+│ Stay in webview. No    │  │ motorcycle workshop     │
+│ account? Register      │  │ booking + spare parts.  │
+│ inline. Never leave    │  │                        │
+│ the flow.              │  │ Hackathon bonus points. │
+└────────────────────────┘  └────────────────────────┘
 
 BUSINESS IMPACT:
-┌──────────────────────────────────────────────────────────┐
-│ For MSMEs:     Digital storefront in 10 min, zero cost   │
-│ For AstraPay:  New merchant acquisition channel,          │
-│                full ecosystem adoption in one product     │
-│ For Customers: Buy & pay in the app they already use     │
-└──────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│ For MSMEs:     Digital storefront in 10 min, zero cost       │
+│ For AstraPay:  New merchant acquisition from 30M+ MSMEs,     │
+│                full ecosystem adoption in one product        │
+│ For Customers: Buy & pay inside the app they already use     │
+└──────────────────────────────────────────────────────────────┘
 ```
 
-**Design:** 5 advantage cards in a pentagon/grid layout. Comparison table with DOKU PayChat.
+**Design:** Landscape spectrum at top. 5 advantage cards below. Impact box at bottom.
 
 ---
 
