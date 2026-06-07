@@ -678,7 +678,7 @@ flowchart TD
 ## 12. FLOWCHART: Customer Order Flow — Native AstraPay (Simplified)
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[Scan QR or tap link]
     A --> B[Bot greets<br/>What would you like?]
     B --> C[Browse catalog<br/>See products with prices]
