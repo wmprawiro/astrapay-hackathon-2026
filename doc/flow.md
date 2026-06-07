@@ -675,4 +675,24 @@ flowchart TD
 
 ---
 
+## 12. FLOWCHART: Customer Order Flow — Native AstraPay (Simplified)
+
+```mermaid
+flowchart TD
+    A[Scan QR or tap link]
+    A --> B[Bot greets<br/>What would you like?]
+    B --> C[Browse catalog<br/>See products with prices]
+    C --> D[Pick product and quantity]
+    D --> E[Enter name, address, notes]
+    E --> F[Pay with AstraPay]
+    F --> G{App installed?}
+    G -->|Yes| H[Open AstraPay app<br/>Enter PIN]
+    G -->|No| I[Stay in webview<br/>Input HP and PIN]
+    H --> J[Paid]
+    I --> J
+    J --> K[Order confirmed<br/>Order #001 PAID]
+```
+
+---
+
 *Semua diagram siap copy-paste ke [mermaid.live](https://mermaid.live)*
