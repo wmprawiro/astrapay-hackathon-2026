@@ -8,11 +8,10 @@
 AstraPay Chat
 
 ### Subtitle
-Sell on WhatsApp. Pay with AstraPay.
-No Website. No App. No Friction.
+Chat, Shop, Pay with AstraPay
 
 ### Footer
-Hackathon AstraPay 2026 | Team [Nama Tim] | June 2026
+Hackathon AstraPay 2026 | Team Nakama | June 2026
 
 ### Visual
 Background: Gradient ungu `#6C2BD9` → `#4A1D99`
@@ -346,8 +345,7 @@ QRIS integration (bonus) | Error handling | Dry run | Submit & present
 AstraPay Chat
 
 ### Quote
-"Sell on WhatsApp. Pay with AstraPay.
-No Website. No App. No Friction."
+"Chat, Shop, Pay with AstraPay"
 
 ### Info
 Repository: github.com/wmprawiro/astrapay-hackathon-2026

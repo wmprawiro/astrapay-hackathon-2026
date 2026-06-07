@@ -8,7 +8,7 @@
 
 | # | What | Where |
 |---|------|-------|
-| 1 | **Team Name** | Slide 1 |
+| 1 | **Team Name** — Nakama | Slide 1 |
 | 2 | **Member 1** — Name + Role (Backend Engineer) | Slide 1, 11 |
 | 3 | **Member 2** — Name + Role (Frontend Engineer) | Slide 1, 11 |
 | 4 | **Member 3** — Name + Role (WA Integration) | Slide 1, 11 |

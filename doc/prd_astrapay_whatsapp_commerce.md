@@ -39,7 +39,7 @@ Pelanggan cukup chat, pilih produk, dan bayar dalam satu alur di WhatsApp yang s
 
 ### 3.1 Value Proposition
 
-> **"Jualan di WhatsApp, bayar pakai AstraPay. Tanpa website, tanpa ribet."**
+> **"Chat, Shop, Pay with AstraPay"**
 
 Sebuah chatbot WhatsApp yang terhubung ke ekosistem AstraPay:
 - Merchant setup katalog produk via dashboard dalam 10 menit

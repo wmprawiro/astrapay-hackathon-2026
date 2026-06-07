@@ -15,14 +15,13 @@
 │                                                          │
 │                   ASTRA PAY CHAT                         │
 │                   ───────────────                        │
-│           Sell on WhatsApp. Pay with AstraPay.           │
-│           No Website. No App. No Friction.               │
+│           Chat, Shop, Pay with AstraPay                  │
 │                                                          │
 │           Hackathon AstraPay 2026                        │
 │           Product Innovation Integrated                  │
 │           with AstraPay Ecosystem                        │
 │                                                          │
-│           Team: [Team Name]                              │
+│           Team: Nakama                                   │
 │           1. [Name] — [Role]                             │
 │           2. [Name] — [Role]                             │
 │           3. [Name] — [Role]                             │
@@ -31,7 +30,7 @@
 ```
 
 > **Title:** AstraPay Chat
-> **Subtitle:** Sell on WhatsApp. Pay with AstraPay. No Website. No App. No Friction.
+> **Subtitle:** Chat, Shop, Pay with AstraPay
 > **Bottom:** Hackathon AstraPay 2026 | Team [Name] | June 2026
 
 **Design:** Gradient background `#6C2BD9` → `#4A1D99`. AstraPay logo top-left. WhatsApp ⊕ AstraPay icon center.
@@ -455,8 +454,7 @@ RISK & MITIGATION:
 │                                                          │
 │                   🟣 ASTRA PAY CHAT                      │
 │                                                          │
-│            Sell on WhatsApp. Pay with AstraPay.          │
-│            No Website. No App. No Friction.              │
+│            Chat, Shop, Pay with AstraPay                 │
 │                                                          │
 │            ────────────────────────────                  │
 │                                                          │
@@ -475,7 +473,7 @@ RISK & MITIGATION:
 ```
 
 **Title:** AstraPay Chat
-**Quote:** "Sell on WhatsApp. Pay with AstraPay. No Website. No App. No Friction."
+**Quote:** "Chat, Shop, Pay with AstraPay"
 **Info:** Repo URL, contact, QR code
 
 **Design:** Same gradient as cover slide. Clean and minimal.
@@ -486,7 +484,7 @@ RISK & MITIGATION:
 
 | # | Item | Slides |
 |---|------|--------|
-| 1 | **Team Name** | 1 |
+| 1 | **Team Name** — Nakama | 1 |
 | 2 | **Member 1** — Name + Role (Backend) | 1, 11 |
 | 3 | **Member 2** — Name + Role (Frontend) | 1, 11 |
 | 4 | **Member 3** — Name + Role (WA Integration) | 1, 11 |
