@@ -62,7 +62,7 @@
 │ │ Name: Rina                  │ │
 │ │ Address: Jl. Melati No. 5   │ │
 │ │                             │ │
-│ │ [🟣 AstraPay]  [📱 QRIS]   │ │
+│ │ [🟣 Bayar dengan AstraPay]    │ │
 │ └─────────────────────────────┘ │
 │                                 │
 │ ┌─────────────────────────────┐ │

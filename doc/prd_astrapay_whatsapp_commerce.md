@@ -232,14 +232,13 @@ Sebuah chatbot WhatsApp yang terhubung ke ekosistem AstraPay:
     - Beras 5kg x2 = Rp 130.000
     - Nama: Rina
     - Alamat: Jl. Melati No. 5
-    Pilih metode bayar:
-    [🟣 AstraPay] [📱 QRIS]"
-17. Customer klik "AstraPay"
-18. Bot: "Masukkan nomor HP yang terdaftar di AstraPay:"
-19. Customer: "081234567890"
-20. Bot kirim link pembayaran AstraPay
-21. Customer klik → halaman PIN AstraPay → input PIN → sukses
-22. Bot: "✅ Pesanan #INV-042 diterima!
+    [💳 Bayar dengan AstraPay]"
+17. Customer klik "Bayar dengan AstraPay"
+18. Bot kirim link pembayaran AstraPay
+19. Customer klik → halaman PIN AstraPay di webview
+20. Jika app AstraPay terpasang: buka app → input PIN → sukses
+   Jika tidak: tetap di webview → input nomor HP + PIN → sukses
+21. Bot: "✅ Pesanan #INV-042 diterima!
     Total: Rp 130.000 — LUNAS
     Estimasi pengiriman: besok pagi.
     Terima kasih, Rina! 🙏"

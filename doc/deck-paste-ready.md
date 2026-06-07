@@ -89,7 +89,7 @@ Payment happens in an AstraPay webview — auto-detects if app is installed. If 
 
 **③ Set Chatbot** (2 min) — Write greeting message, menu options
 
-**④ Choose Payment** (1 min) — ☑ AstraPay ☑ QRIS
+**④ Choose Payment** (1 min) — ☑ AstraPay
 
 **⑤ Activate** (1 min) — Get QR code + WhatsApp link
 
@@ -136,17 +136,17 @@ Type product number to pick
 **❹ ENTER DETAILS**
 Name, address, delivery notes
 
-**❺ CHOOSE PAYMENT**
-[🟣 AstraPay] or [📱 QRIS]
+**❺ PAY WITH ASTRAPAY**
+[🟣 AstraPay] — webview, no app needed
 
 **❻ PAID & DONE**
 "✅ Order #001 PAID. Total: Rp 130,000. Delivering tomorrow. Thank you! 🙏"
 
 ### Highlight
 ⏱ < 2 minutes first chat to payment
-📱 100% inside WhatsApp — no app install
-💳 Push to Payment — just HP number + PIN in webview
-🔁 QRIS accepts ALL e-wallets
+📱 100% inside WhatsApp — no app download
+💳 Native AstraPay webview — if app installed: opens app; if not: stay in webview
+🟣 Full AstraPay native experience
 
 ---
 

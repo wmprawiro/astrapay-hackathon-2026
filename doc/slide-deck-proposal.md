@@ -123,7 +123,7 @@ LEFT — MERCHANT ONBOARDING:         RIGHT — DASHBOARD:
    menu options                     │ 💳 Payments        │
    ↓                                │ Real-time status  │
 ④ Choose Payment (1 min)            │                   │
-   ☑ AstraPay  ☑ QRIS              │ 📊 Reports         │
+   ☑ AstraPay                        │ 📊 Reports         │
    ↓                                │ Download CSV      │
 ⑤ Activate (1 min)                  │                   │
    Get QR code + WA link            │ 📢 Broadcast       │
@@ -157,17 +157,17 @@ Scan QR at         "What would       "1. Rice 5kg — 65K
 store or tap       you like?"       2. Cooking Oil — 36K"
 link from WA       [🛒 Shop] [📢]    Type number to pick
 
-❹ ENTER DETAILS   ❺ CHOOSE PAY      ❻ PAID & DONE
+❹ ENTER DETAILS   ❺ PAY WITH ASTRA   ❻ PAID & DONE
 [📝 Fill form] →  [💳 Pay Now]  →  [✅ Confirmed!]
 Name, address,     [🟣 AstraPay]    "Order #001
-notes             [📱 QRIS]         PAID. Delivering
-                                    tomorrow. 🙏"
+notes             Webview — no app   PAID. Delivering
+                  needed            tomorrow. 🙏"
 
 HIGHLIGHT:
 ⏱ < 2 minutes first chat to payment
-📱 100% inside WhatsApp — no app install
-💳 AstraPay Push to Payment — just HP number + PIN in webview
-🔁 QRIS option available — accepts ALL e-wallets
+📱 100% inside WhatsApp — no app download
+💳 Native AstraPay webview — if app installed: opens app; if not: pay in webview
+🟣 No QRIS needed — full AstraPay native experience
 ```
 
 **Design:** 6-step horizontal timeline with icons. Screenshot mockup below.
