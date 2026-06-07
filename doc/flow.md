@@ -692,4 +692,24 @@ flowchart LR
 
 ---
 
+## 13. SEQUENCE DIAGRAM: Payment Flow — Seamless Payment Without Leaving WhatsApp
+
+```mermaid
+flowchart LR
+    A[User taps<br/>Pay link] --> B{App installed?}
+    B -->|Yes| C[Open AstraPay app]
+    C --> D[Enter PIN]
+    D --> E[PAID]
+    B -->|No| F[Stay in webview]
+    F --> G[Input phone number]
+    G --> H[Enter PIN]
+    H --> I{Has account?}
+    I -->|Yes| E
+    I -->|No| J[Register in webview]
+    J --> E
+    E --> K[Bot sends confirmation<br/>Order #001 PAID]
+```
+
+---
+
 *Semua diagram siap copy-paste ke [mermaid.live](https://mermaid.live)*
