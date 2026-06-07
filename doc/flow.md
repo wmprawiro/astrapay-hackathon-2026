@@ -680,17 +680,14 @@ flowchart TD
 ```mermaid
 flowchart LR
     A[Scan QR or tap link]
-    A --> B[Bot greets<br/>What would you like?]
-    B --> C[Browse catalog<br/>See products with prices]
-    C --> D[Pick product and quantity]
-    D --> E[Enter name, address, notes]
-    E --> F[Pay with AstraPay]
-    F --> G{App installed?}
-    G -->|Yes| H[Open AstraPay app<br/>Enter PIN]
-    G -->|No| I[Stay in webview<br/>Input HP and PIN]
-    H --> J[Paid]
-    I --> J
-    J --> K[Order confirmed<br/>Order #001 PAID]
+    A --> B[Bot greets, browse catalog<br/>enter detail]
+    B --> C[Pay with AstraPay]
+    C --> D{App installed?}
+    D -->|Yes| E[Open app<br/>Enter PIN]
+    D -->|No| F[Stay in webview<br/>Input HP and PIN]
+    E --> G[Paid]
+    F --> G
+    G --> H[Order confirmed<br/>Order #001 PAID]
 ```
 
 ---
