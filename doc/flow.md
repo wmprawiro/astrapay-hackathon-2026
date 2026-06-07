@@ -662,26 +662,15 @@ classDiagram
 
 ```mermaid
 flowchart TD
-    START(["🚀 Merchant Baru Mendaftar"]) --> R1["① Register <b>1 min</b><br/>Email &amp; password"]
-    R1 --> R2["② Add Products <b>3 min</b><br/>Upload photo, name, price, stock"]
-    R2 --> R3["③ Set Chatbot <b>2 min</b><br/>Write greeting message, menu options"]
-    R3 --> R4["④ Activate <b>1 min</b><br/>Get QR code + WA link"]
-    R4 --> R5["⑤ Distribute QR"]
-    R5 --> D1["Display in store"]
-    R5 --> D2["Share to customers"]
-    R5 --> D3["Post on social media"]
-    R5 --> D4["Print on packaging"]
-
-    style START fill:#4CAF50,color:#fff
-    style R1 fill:#2196F3,color:#fff
-    style R2 fill:#2196F3,color:#fff
-    style R3 fill:#2196F3,color:#fff
-    style R4 fill:#FF9800,color:#000
-    style R5 fill:#9C27B0,color:#fff
-    style D1 fill:#E1BEE7,color:#000
-    style D2 fill:#E1BEE7,color:#000
-    style D3 fill:#E1BEE7,color:#000
-    style D4 fill:#E1BEE7,color:#000
+    A[Register 1 min<br/>Email and password]
+    A --> B[Add Products 3 min<br/>Upload photo, name, price, stock]
+    B --> C[Set Chatbot 2 min<br/>Write greeting message, menu options]
+    C --> D[Activate 1 min<br/>Get QR code and WA link]
+    D --> E[Distribute QR]
+    E --> F[Display in store]
+    E --> G[Share to customers]
+    E --> H[Post on social media]
+    E --> I[Print on packaging]
 ```
 
 ---
