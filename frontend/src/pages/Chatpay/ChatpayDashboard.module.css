@@ -1,0 +1,114 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 160px;
+  gap: 40px;
+}
+
+.heroSection {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  gap: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-gray);
+  line-height: 1.5;
+}
+
+.connectBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #25d366; /* WhatsApp Green */
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  width: fit-content;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.connectBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.waIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featuresSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.featureCard {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+}
+
+.featureIcon {
+  font-size: 32px;
+}
+
+.featureTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.featureDesc {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.5;
+}
