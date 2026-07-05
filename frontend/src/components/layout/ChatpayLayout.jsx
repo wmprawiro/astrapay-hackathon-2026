@@ -55,9 +55,9 @@ export default function ChatpayLayout() {
 
             <NavLink to="/chatpay/customers">
               {({ isActive }) => (
-                <div className={getNavClasses(isActive).container} style={{ width: '182px' }}>
+                <div className={getNavClasses(isActive).container} style={{ width: '150px' }}>
                   <div className="content-stretch flex items-center justify-center p-[16px] relative shrink-0 w-full">
-                    <p className={getNavClasses(isActive).text}>Daftar Pelanggan</p>
+                    <p className={getNavClasses(isActive).text}>Pelanggan</p>
                   </div>
                 </div>
               )}
@@ -67,7 +67,17 @@ export default function ChatpayLayout() {
               {({ isActive }) => (
                 <div className={getNavClasses(isActive).container} style={{ width: '173px' }}>
                   <div className="content-stretch flex items-center justify-center p-[16px] relative shrink-0 w-full">
-                    <p className={getNavClasses(isActive).text}>Daftar Template</p>
+                    <p className={getNavClasses(isActive).text}>Template Pesan</p>
+                  </div>
+                </div>
+              )}
+            </NavLink>
+
+            <NavLink to="/chatpay/quick-reply">
+              {({ isActive }) => (
+                <div className={getNavClasses(isActive).container} style={{ width: '160px' }}>
+                  <div className="content-stretch flex items-center justify-center p-[16px] relative shrink-0 w-full">
+                    <p className={getNavClasses(isActive).text}>Quick Reply</p>
                   </div>
                 </div>
               )}
