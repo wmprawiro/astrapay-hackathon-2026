@@ -3,19 +3,19 @@ import HeaderSection from '../../components/HeaderSection';
 import CardSection from '../../components/CardSection';
 import TopLeftBlur from '../../components/TopLeftBlur';
 
-const imgMerchantAstrapay1 = "http://localhost:3845/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.png";
-const imgVector4 = "http://localhost:3845/assets/6b3bfb05efc8ad20434727282726374fcc98ba2f.png";
-const imgVector5 = "http://localhost:3845/assets/942c06c5a5e07a267eae39d854b32307ac5d0e5b.png";
-const imgGroup = "http://localhost:3845/assets/103308619a1eb6a68fb3a91cb4bb425966a2099c.svg";
-const imgChevronDown1 = "http://localhost:3845/assets/921993f4d7705b7f55459336d0f11d508c3c0f68.svg";
-const imgContainer = "http://localhost:3845/assets/31023dcecb8159da0a309b6e2849c922a29c1a3b.svg";
-const imgContainer1 = "http://localhost:3845/assets/ede5ed7deffd964ea5792eebc9aa66b1175a7c9e.svg";
-const imgInformationBlue1 = "http://localhost:3845/assets/56d08776671874febb5c20c151e174128c15f3ec.svg";
-const imgVector = "http://localhost:3845/assets/8bc1f4b683bde6102446d4afcc756e244839c96e.svg";
-const imgVector1 = "http://localhost:3845/assets/b4ef1d9020689c5b652aaee276e4af8d6ae75a1b.svg";
-const imgVector2 = "http://localhost:3845/assets/52fde205d935133250488da34fc6a8e86e9a5162.svg";
-const imgVector3 = "http://localhost:3845/assets/0f33c38cb876bdef84e28279d54e8c28c572e494.svg";
-const imgBoxArrowRight1 = "http://localhost:3845/assets/c6f61da675caf3242a23c177f812aea56f35d1f8.svg";
+const imgMerchantAstrapay1 = "/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.png";
+const imgVector4 = "/assets/6b3bfb05efc8ad20434727282726374fcc98ba2f.png";
+const imgVector5 = "/assets/942c06c5a5e07a267eae39d854b32307ac5d0e5b.png";
+const imgGroup = "/assets/103308619a1eb6a68fb3a91cb4bb425966a2099c.svg";
+const imgChevronDown1 = "/assets/921993f4d7705b7f55459336d0f11d508c3c0f68.svg";
+const imgContainer = "/assets/31023dcecb8159da0a309b6e2849c922a29c1a3b.svg";
+const imgContainer1 = "/assets/ede5ed7deffd964ea5792eebc9aa66b1175a7c9e.svg";
+const imgInformationBlue1 = "/assets/56d08776671874febb5c20c151e174128c15f3ec.svg";
+const imgVector = "/assets/8bc1f4b683bde6102446d4afcc756e244839c96e.svg";
+const imgVector1 = "/assets/b4ef1d9020689c5b652aaee276e4af8d6ae75a1b.svg";
+const imgVector2 = "/assets/52fde205d935133250488da34fc6a8e86e9a5162.svg";
+const imgVector3 = "/assets/0f33c38cb876bdef84e28279d54e8c28c572e494.svg";
+const imgBoxArrowRight1 = "/assets/c6f61da675caf3242a23c177f812aea56f35d1f8.svg";
 
 export default function Dashboard() {
   return (

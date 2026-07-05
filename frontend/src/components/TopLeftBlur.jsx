@@ -1,6 +1,6 @@
 import React from 'react';
 
-const imgTopLeftBlur1 = "http://localhost:3845/assets/17bd7baaf6677f36e2f2a5b2bebfc898b6bf5d5c.png";
+const imgTopLeftBlur1 = "/assets/17bd7baaf6677f36e2f2a5b2bebfc898b6bf5d5c.png";
 
 export default function TopLeftBlur() {
   return (

@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { QRCodeCanvas } from 'qrcode.react';
 
-const imgItalicText = "http://localhost:3845/assets/354d1ce42bfebc06a7f902f70beb5618c05714a6.png";
-const imgInformationBlue1 = "http://localhost:3845/assets/92f7d10e746c39d4f6a4713e40d1544d5db23f21.svg";
-const imgVector = "http://localhost:3845/assets/93ae763e8f742cbeb80f73cce3d76ba5cb1b5670.svg";
+const imgItalicText = "/assets/354d1ce42bfebc06a7f902f70beb5618c05714a6.png";
+const imgInformationBlue1 = "/assets/92f7d10e746c39d4f6a4713e40d1544d5db23f21.svg";
+const imgVector = "/assets/93ae763e8f742cbeb80f73cce3d76ba5cb1b5670.svg";
 
 export default function BindingModal({ onClose }) {
   const navigate = useNavigate();

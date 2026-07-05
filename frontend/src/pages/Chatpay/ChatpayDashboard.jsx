@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import BindingModal from '../../components/BindingModal';
 import DashboardStatCard from '../../components/DashboardStatCard';
 
-const imgWhatsapp1 = "http://localhost:3845/assets/32c22dfd2d30efc1107f429315114489752d1c67.svg";
-const imgMerchantAstrapay1 = "http://localhost:3845/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.png";
+const imgWhatsapp1 = "/assets/32c22dfd2d30efc1107f429315114489752d1c67.svg";
+const imgMerchantAstrapay1 = "/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.png";
 
 export default function ChatpayDashboard({ isLoggedIn }) {
   const [isBindingModalOpen, setIsBindingModalOpen] = useState(false);

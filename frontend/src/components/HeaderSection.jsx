@@ -1,8 +1,8 @@
 import React from 'react';
 import TopLeftBlur from './TopLeftBlur';
 
-const imgMerchantAstrapay1 = "http://localhost:3845/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.png";
-const imgContainer = "http://localhost:3845/assets/ede5ed7deffd964ea5792eebc9aa66b1175a7c9e.svg";
+const imgMerchantAstrapay1 = "/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.png";
+const imgContainer = "/assets/ede5ed7deffd964ea5792eebc9aa66b1175a7c9e.svg";
 
 export default function HeaderSection() {
   return (

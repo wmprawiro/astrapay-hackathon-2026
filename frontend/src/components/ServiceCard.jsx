@@ -1,12 +1,12 @@
 import React from 'react';
 
 // Asset constants dari Figma - card illustration vectors
-const imgVector = "http://localhost:3845/assets/8bc1f4b683bde6102446d4afcc756e244839c96e.svg";
-const imgVector1 = "http://localhost:3845/assets/b4ef1d9020689c5b652aaee276e4af8d6ae75a1b.svg";
-const imgVector2 = "http://localhost:3845/assets/52fde205d935133250488da34fc6a8e86e9a5162.svg";
-const imgVector3 = "http://localhost:3845/assets/0f33c38cb876bdef84e28279d54e8c28c572e494.svg";
-const imgVector4 = "http://localhost:3845/assets/6b3bfb05efc8ad20434727282726374fcc98ba2f.png";
-const imgVector5 = "http://localhost:3845/assets/942c06c5a5e07a267eae39d854b32307ac5d0e5b.png";
+const imgVector = "/assets/8bc1f4b683bde6102446d4afcc756e244839c96e.svg";
+const imgVector1 = "/assets/b4ef1d9020689c5b652aaee276e4af8d6ae75a1b.svg";
+const imgVector2 = "/assets/52fde205d935133250488da34fc6a8e86e9a5162.svg";
+const imgVector3 = "/assets/0f33c38cb876bdef84e28279d54e8c28c572e494.svg";
+const imgVector4 = "/assets/6b3bfb05efc8ad20434727282726374fcc98ba2f.png";
+const imgVector5 = "/assets/942c06c5a5e07a267eae39d854b32307ac5d0e5b.png";
 
 /**
  * ServiceCard - Reusable component for service cards on Dashboard

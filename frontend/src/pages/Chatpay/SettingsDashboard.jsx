@@ -1,6 +1,6 @@
 import React from 'react';
 
-const imgImagePengaturanBisnis = "http://localhost:3845/assets/d413de071cb74f551853c9981a9e81dedd604822.png";
+const imgImagePengaturanBisnis = "/assets/d413de071cb74f551853c9981a9e81dedd604822.png";
 
 export default function SettingsDashboard({ userNumber, onLogout }) {
   return (

@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 // Asset constants dari Figma
-const imgGroup = "http://localhost:3845/assets/103308619a1eb6a68fb3a91cb4bb425966a2099c.svg";
-const imgChevronDown1 = "http://localhost:3845/assets/921993f4d7705b7f55459336d0f11d508c3c0f68.svg";
-const imgContainer = "http://localhost:3845/assets/31023dcecb8159da0a309b6e2849c922a29c1a3b.svg";
-const imgBoxArrowRight1 = "http://localhost:3845/assets/c6f61da675caf3242a23c177f812aea56f35d1f8.svg";
+const imgGroup = "/assets/103308619a1eb6a68fb3a91cb4bb425966a2099c.svg";
+const imgChevronDown1 = "/assets/921993f4d7705b7f55459336d0f11d508c3c0f68.svg";
+const imgContainer = "/assets/31023dcecb8159da0a309b6e2849c922a29c1a3b.svg";
+const imgBoxArrowRight1 = "/assets/c6f61da675caf3242a23c177f812aea56f35d1f8.svg";
 
 export default function TopNavigation({ activeTab = 'beranda' }) {
   return (
