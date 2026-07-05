@@ -3,3 +3,8 @@ node_modules
 .env
 
 /generated/prisma
+
+keys/
+data/
+payload.json
+auth_info_baileys/

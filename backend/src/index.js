@@ -27,9 +27,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date() });
 });
 
-// Nanti: rute astrapay dan whatsapp
-// app.use('/api/astrapay', require('./routes/astrapay'));
-// app.use('/api/whatsapp', require('./routes/whatsapp'));
+app.use('/api/data', require('./routes/api'));
+app.use('/api/astrapay', require('./routes/astrapay'));
+app.use('/api/whatsapp', require('./routes/whatsapp'));
 
 io.on('connection', (socket) => {
     console.log('Frontend connected via WebSocket:', socket.id);

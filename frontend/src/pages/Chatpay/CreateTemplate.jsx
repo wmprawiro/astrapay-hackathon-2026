@@ -9,32 +9,36 @@ export default function CreateTemplate() {
   const [templateName, setTemplateName] = useState('');
   const [category, setCategory] = useState('UTILITY');
   const [language, setLanguage] = useState('id');
-  
+
   const [headerType, setHeaderType] = useState('NONE'); // NONE, TEXT, IMAGE
   const [headerText, setHeaderText] = useState('');
-  
+
   const [bodyText, setBodyText] = useState('Halo {{1}}, tagihan Anda sebesar {{2}} sudah tersedia.');
   const [footerText, setFooterText] = useState('');
-  
+
   const [buttons, setButtons] = useState([]); // Array of { type: 'QUICK_REPLY' | 'URL', text: '', url: '' }
   const [variableValues, setVariableValues] = useState({}); // { '1': 'value', '2': 'value' }
 
   // Load existing template data when editing
   React.useEffect(() => {
     if (isEditing) {
-      const stored = JSON.parse(localStorage.getItem('chatpay_templates') || '[]');
-      const tmpl = stored[parseInt(id)];
-      if (tmpl) {
-        setTemplateName(tmpl.templateName || '');
-        setCategory(tmpl.category || 'UTILITY');
-        setLanguage(tmpl.language || 'id');
-        setHeaderType(tmpl.headerType || 'NONE');
-        setHeaderText(tmpl.headerText || '');
-        setBodyText(tmpl.bodyText || '');
-        setFooterText(tmpl.footerText || '');
-        setButtons(tmpl.buttons || []);
-        setVariableValues(tmpl.variableValues || {});
-      }
+      fetch('http://localhost:3000/api/data/templates')
+        .then(res => res.json())
+        .then(stored => {
+          const tmpl = stored[parseInt(id)];
+          if (tmpl) {
+            setTemplateName(tmpl.templateName || '');
+            setCategory(tmpl.category || 'UTILITY');
+            setLanguage(tmpl.language || 'id');
+            setHeaderType(tmpl.headerType || 'NONE');
+            setHeaderText(tmpl.headerText || '');
+            setBodyText(tmpl.bodyText || '');
+            setFooterText(tmpl.footerText || '');
+            setButtons(tmpl.buttons || []);
+            setVariableValues(tmpl.variableValues || {});
+          }
+        })
+        .catch(err => console.error(err));
     }
   }, [id, isEditing]);
 
@@ -72,7 +76,7 @@ export default function CreateTemplate() {
     setButtons(buttons.filter((_, i) => i !== index));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const templateData = {
       templateName,
       category,
@@ -85,16 +89,27 @@ export default function CreateTemplate() {
       variableValues,
     };
 
-    const stored = JSON.parse(localStorage.getItem('chatpay_templates') || '[]');
-    
-    if (isEditing) {
-      stored[parseInt(id)] = templateData;
-    } else {
-      stored.push(templateData);
+    try {
+      const res = await fetch('http://localhost:3000/api/data/templates');
+      let stored = await res.json();
+      if (!Array.isArray(stored)) stored = [];
+
+      if (isEditing) {
+        stored[parseInt(id)] = templateData;
+      } else {
+        stored.push(templateData);
+      }
+
+      await fetch('http://localhost:3000/api/data/templates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ templates: stored })
+      });
+
+      navigate('/chatpay/templates');
+    } catch (err) {
+      console.error(err);
     }
-    
-    localStorage.setItem('chatpay_templates', JSON.stringify(stored));
-    navigate('/chatpay/templates');
   };
 
   const renderPreviewBody = (text) => {
@@ -115,18 +130,18 @@ export default function CreateTemplate() {
   return (
     <div className="flex flex-col items-start px-8 md:px-[160px] py-[16px] w-full h-full bg-[#f8f9fa]">
       <div className="bg-white border border-[rgba(37,37,37,0.13)] rounded-[12px] p-[17px] w-full flex flex-col h-full overflow-hidden">
-        
+
         {/* Header Container */}
         <div className="pb-4 w-full flex justify-between items-center shrink-0">
           <h2 className="font-semibold text-[#252525] text-[16px]">{isEditing ? 'Edit Template Pesan' : 'Buat Template Pesan Baru'}</h2>
           <div className="flex items-center gap-3">
-            <button 
-              onClick={() => navigate('/chatpay/templates')} 
+            <button
+              onClick={() => navigate('/chatpay/templates')}
               className="border border-[#104bdd] text-[#104bdd] font-semibold text-[14px] px-[20px] py-[8px] rounded-[6px] hover:bg-blue-50 transition-colors"
             >
               Batal
             </button>
-            <button 
+            <button
               onClick={handleSave}
               className="bg-[#104bdd] hover:bg-[#0e3eae] transition-colors flex items-center justify-center px-[20px] py-[8px] rounded-[6px]"
             >
@@ -137,17 +152,17 @@ export default function CreateTemplate() {
 
         {/* Two Columns Container */}
         <div className="flex-1 flex overflow-hidden pt-4 gap-6">
-          
+
           {/* Left Column: Form Builder */}
           <div className="flex-1 min-w-0 flex flex-col overflow-y-auto pr-2 pb-10 gap-6 custom-scrollbar">
-            
+
             {/* Informasi Dasar */}
             <div className="flex flex-col gap-6">
-              
+
               <div className="flex flex-col w-full gap-3">
                 <label className="text-[14px] font-semibold text-[#252525]">Nama Template</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={templateName}
                   onChange={handleTemplateNameChange}
                   placeholder="cth: tagihan_servis"
@@ -159,7 +174,7 @@ export default function CreateTemplate() {
               <div className="flex gap-6">
                 <div className="flex flex-col w-full gap-3 flex-1">
                   <label className="text-[14px] font-semibold text-[#252525]">Kategori</label>
-                  <select 
+                  <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     className="w-full border border-[#e0e0e0] rounded-[8px] text-[14px] text-[#252525] outline-none focus:border-[#104bdd] transition-colors bg-white cursor-pointer"
@@ -172,7 +187,7 @@ export default function CreateTemplate() {
                 </div>
                 <div className="flex flex-col w-full gap-3 flex-1">
                   <label className="text-[14px] font-semibold text-[#252525]">Bahasa</label>
-                  <select 
+                  <select
                     value={language}
                     onChange={(e) => setLanguage(e.target.value)}
                     className="w-full border border-[#e0e0e0] rounded-[8px] text-[14px] text-[#252525] outline-none focus:border-[#104bdd] transition-colors bg-white cursor-pointer"
@@ -187,11 +202,11 @@ export default function CreateTemplate() {
 
             {/* Konten Pesan */}
             <div className="flex flex-col gap-6">
-              
+
               <div className="flex flex-col w-full gap-3">
                 <div className="flex justify-between items-center">
                   <label className="text-[14px] font-semibold text-[#252525]">Header <span className="text-gray-400 font-normal">(Opsional)</span></label>
-                  <select 
+                  <select
                     value={headerType}
                     onChange={(e) => setHeaderType(e.target.value)}
                     className="w-full border border-[#e0e0e0] rounded-[8px] text-[14px] text-[#252525] outline-none focus:border-[#104bdd] transition-colors bg-white cursor-pointer"
@@ -203,8 +218,8 @@ export default function CreateTemplate() {
                   </select>
                 </div>
                 {headerType === 'TEXT' && (
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={headerText}
                     onChange={(e) => setHeaderText(e.target.value)}
                     placeholder="Teks header..."
@@ -221,7 +236,7 @@ export default function CreateTemplate() {
 
               <div className="flex flex-col w-full gap-3">
                 <label className="text-[14px] font-semibold text-[#252525]">Isi Pesan <span className="text-red-500">*</span></label>
-                <textarea 
+                <textarea
                   value={bodyText}
                   onChange={(e) => setBodyText(e.target.value)}
                   rows={5}
@@ -229,7 +244,7 @@ export default function CreateTemplate() {
                   className="w-full border border-[#e0e0e0] rounded-[8px] px-[16px] py-[12px] text-[14px] text-[#252525] outline-none focus:border-[#104bdd] transition-colors resize-y"
                 />
                 <p className="text-[12px] text-gray-500">Gunakan kurung kurawal ganda untuk variabel dinamis (cth: {'{{1}}'}).</p>
-                <button 
+                <button
                   onClick={handleAddVariable}
                   type="button"
                   className="border border-[#104bdd] text-[#104bdd] font-semibold text-[14px] px-[20px] py-[8px] rounded-[6px] hover:bg-blue-50 transition-colors w-fit"
@@ -245,8 +260,8 @@ export default function CreateTemplate() {
                   {getVariablesFromBody().map((varNum) => (
                     <div key={varNum} className="flex flex-col gap-1">
                       <label className="text-[13px] text-gray-500">{`{{${varNum}}}`}</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={variableValues[varNum] || ''}
                         onChange={(e) => updateVariableValue(varNum, e.target.value)}
                         placeholder={`Contoh nilai untuk variabel {{${varNum}}} (teks atau URL)`}
@@ -259,8 +274,8 @@ export default function CreateTemplate() {
 
               <div className="flex flex-col w-full gap-3">
                 <label className="text-[14px] font-semibold text-[#252525]">Footer <span className="text-gray-400 font-normal">(Opsional)</span></label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={footerText}
                   onChange={(e) => setFooterText(e.target.value)}
                   placeholder="Teks kecil di bagian bawah pesan"
@@ -269,13 +284,13 @@ export default function CreateTemplate() {
                 />
               </div>
             </div>
-            
+
           </div>
 
           {/* Right Column: WhatsApp Live Preview (Fixed Width) */}
           <div className="shrink-0 bg-[#e5ddd5] rounded-[12px] relative flex flex-col overflow-hidden border border-[rgba(37,37,37,0.13)]" style={{ width: '390px', minWidth: '390px', maxWidth: '390px' }}>
             <div className="absolute inset-0 opacity-40 mix-blend-multiply pointer-events-none" style={{ backgroundImage: 'url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png")', backgroundRepeat: 'repeat', backgroundSize: '400px' }}></div>
-            
+
             {/* Chat Area */}
             <div className="w-full flex-1 flex flex-col items-start relative z-10 overflow-y-auto">
               <div className="bg-white rounded-[8px] rounded-tl-none flex flex-col relative overflow-hidden" style={{ maxWidth: 'calc(100% - 40px)', marginLeft: '20px', marginTop: '20px' }}>
@@ -295,11 +310,11 @@ export default function CreateTemplate() {
                       </svg>
                     </div>
                   )}
-                  
+
                   <div className="text-[14.2px] text-[#252525] whitespace-pre-wrap leading-[1.35]" style={{ overflowWrap: 'break-word', wordBreak: 'break-word', hyphens: 'auto' }}>
                     {bodyText ? renderPreviewBody(bodyText) : 'Isi pesan akan tampil di sini'}
                   </div>
-                  
+
                   <div className="flex items-end justify-between mt-1 pt-1 gap-2">
                     <div className="text-[12.5px] text-gray-500 break-words flex-1 leading-tight">
                       {footerText}

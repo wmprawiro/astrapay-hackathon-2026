@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DataTable from '../../components/DataTable';
 
 const CATEGORY_LABELS = {
   UTILITY: 'Utilitas',
@@ -17,15 +18,87 @@ export default function TemplateList() {
   const [templates, setTemplates] = useState([]);
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('chatpay_templates') || '[]');
-    setTemplates(stored);
+    fetch('http://localhost:3000/api/data/templates')
+      .then(res => res.json())
+      .then(data => setTemplates(data))
+      .catch(err => console.error(err));
   }, []);
+
+  const saveToBackend = async (newTemplates) => {
+    try {
+      await fetch('http://localhost:3000/api/data/templates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ templates: newTemplates })
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleDelete = (indexToDelete) => {
     const updated = templates.filter((_, i) => i !== indexToDelete);
     setTemplates(updated);
-    localStorage.setItem('chatpay_templates', JSON.stringify(updated));
+    saveToBackend(updated);
   };
+
+  const columns = [
+    {
+      key: 'templateName',
+      label: 'Nama Template',
+      render: (row) => <span className="text-[14px] font-normal text-[#252525]">{row.templateName || '-'}</span>
+    },
+    {
+      key: 'status',
+      label: 'Status',
+      render: (row) => (
+        (row.status || 'active') === 'active' ? (
+          <span className="inline-flex items-center px-2 py-1 rounded-full text-[12px] font-semibold bg-green-100 text-green-700">Aktif</span>
+        ) : (
+          <span className="inline-flex items-center px-2 py-1 rounded-full text-[12px] font-semibold bg-gray-100 text-gray-500">Inactive</span>
+        )
+      )
+    },
+    {
+      key: 'category',
+      label: 'Kategori',
+      render: (row) => <span className="text-[14px] font-normal text-[#4a4a4a]">{CATEGORY_LABELS[row.category] || row.category}</span>
+    },
+    {
+      key: 'language',
+      label: 'Bahasa',
+      render: (row) => <span className="text-[14px] font-normal text-[#4a4a4a]">{LANGUAGE_LABELS[row.language] || row.language}</span>
+    },
+    {
+      key: 'variableCount',
+      label: 'Variabel',
+      render: (row) => {
+        const varCount = (row.bodyText || '').match(/{{\d+}}/g)?.length || 0;
+        return <span className="text-[14px] font-normal text-[#4a4a4a]">{varCount}</span>;
+      }
+    },
+    {
+      key: 'action',
+      label: 'Aksi',
+      align: 'right',
+      render: (row, index) => (
+        <div className="flex items-center justify-end gap-3">
+          <button 
+            onClick={() => navigate(`/chatpay/templates/edit/${index}`)}
+            className="text-[#104bdd] font-semibold text-[14px] hover:underline"
+          >
+            Edit
+          </button>
+          <button 
+            onClick={() => handleDelete(index)}
+            className="text-[#dc2626] font-semibold text-[14px] hover:underline"
+          >
+            Hapus
+          </button>
+        </div>
+      )
+    }
+  ];
 
   return (
     <div className="flex flex-col items-start px-8 md:px-[160px] py-[16px] w-full h-full">
@@ -63,65 +136,7 @@ export default function TemplateList() {
             </button>
           </div>
         ) : (
-          /* Table State */
-          <div className="w-full mt-2 border-t border-[rgba(37,37,37,0.13)]">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-[rgba(37,37,37,0.13)]">
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Nama Template</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Status</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Kategori</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Bahasa</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Variabel</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525] text-right">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {templates.map((tmpl, idx) => {
-                  const varCount = (tmpl.bodyText || '').match(/{{\d+}}/g)?.length || 0;
-                  return (
-                    <tr key={idx} className="border-b border-[#f2f2f2] hover:bg-gray-50 transition-colors">
-                      <td className="py-[12px] px-[8px]">
-                        <span className="text-[14px] font-normal text-[#252525]">{tmpl.templateName || '-'}</span>
-                      </td>
-                      <td className="py-[12px] px-[8px]">
-                        {(tmpl.status || 'active') === 'active' ? (
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-[12px] font-semibold bg-green-100 text-green-700">Aktif</span>
-                        ) : (
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-[12px] font-semibold bg-gray-100 text-gray-500">Inactive</span>
-                        )}
-                      </td>
-                      <td className="py-[12px] px-[8px]">
-                        <span className="text-[14px] font-normal text-[#4a4a4a]">{CATEGORY_LABELS[tmpl.category] || tmpl.category}</span>
-                      </td>
-                      <td className="py-[12px] px-[8px]">
-                        <span className="text-[14px] font-normal text-[#4a4a4a]">{LANGUAGE_LABELS[tmpl.language] || tmpl.language}</span>
-                      </td>
-                      <td className="py-[12px] px-[8px]">
-                        <span className="text-[14px] font-normal text-[#4a4a4a]">{varCount}</span>
-                      </td>
-                      <td className="py-[12px] px-[8px] text-right">
-                        <div className="flex items-center justify-end gap-3">
-                          <button 
-                            onClick={() => navigate(`/chatpay/templates/edit/${idx}`)}
-                            className="text-[#104bdd] font-semibold text-[14px] hover:underline"
-                          >
-                            Edit
-                          </button>
-                          <button 
-                            onClick={() => handleDelete(idx)}
-                            className="text-[#dc2626] font-semibold text-[14px] hover:underline"
-                          >
-                            Hapus
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <DataTable columns={columns} data={templates} itemsPerPage={10} />
         )}
       </div>
     </div>

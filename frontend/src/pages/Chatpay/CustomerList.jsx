@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EmptyStateCard from '../../components/EmptyStateCard';
 import AddCustomerModal from '../../components/AddCustomerModal';
+import DataTable from '../../components/DataTable';
 
 export default function CustomerList() {
   const [customers, setCustomers] = useState([]);
@@ -8,14 +9,36 @@ export default function CustomerList() {
   const [editingCustomer, setEditingCustomer] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
 
-  const handleSaveCustomer = (newCustomer) => {
-    if (editingIndex !== null) {
-      const updatedCustomers = [...customers];
-      updatedCustomers[editingIndex] = newCustomer;
-      setCustomers(updatedCustomers);
-    } else {
-      setCustomers([...customers, newCustomer]);
+  React.useEffect(() => {
+    fetch('http://localhost:3000/api/data/customers')
+      .then(res => res.json())
+      .then(data => setCustomers(data))
+      .catch(err => console.error(err));
+  }, []);
+
+  const saveToBackend = async (newCustomers) => {
+    try {
+      await fetch('http://localhost:3000/api/data/customers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customers: newCustomers })
+      });
+    } catch (err) {
+      console.error(err);
     }
+  };
+
+  const handleSaveCustomer = (newCustomer) => {
+    let updatedCustomers;
+    if (editingIndex !== null) {
+      updatedCustomers = [...customers];
+      updatedCustomers[editingIndex] = newCustomer;
+    } else {
+      updatedCustomers = [...customers, newCustomer];
+    }
+    setCustomers(updatedCustomers);
+    saveToBackend(updatedCustomers);
+    
     setIsModalOpen(false);
     setEditingCustomer(null);
     setEditingIndex(null);
@@ -25,7 +48,51 @@ export default function CustomerList() {
     const updatedCustomers = [...customers];
     updatedCustomers.splice(indexToDelete, 1);
     setCustomers(updatedCustomers);
+    saveToBackend(updatedCustomers);
   };
+
+  const columns = [
+    {
+      key: 'name',
+      label: 'Nama Pelanggan',
+      render: (row) => <span className="text-[14px] font-normal text-[#252525]">{row.name || '-'}</span>
+    },
+    {
+      key: 'phone',
+      label: 'Nomor Handphone',
+      render: (row) => <span className="text-[14px] font-normal text-[#4a4a4a]">{row.phone}</span>
+    },
+    {
+      key: 'email',
+      label: 'Email',
+      render: (row) => <span className="text-[14px] font-normal text-[#4a4a4a]">{row.email || '-'}</span>
+    },
+    {
+      key: 'action',
+      label: 'Aksi',
+      align: 'right',
+      render: (row, index) => (
+        <div className="flex items-center justify-end gap-3">
+          <button 
+            onClick={() => {
+              setEditingCustomer(row);
+              setEditingIndex(index);
+              setIsModalOpen(true);
+            }}
+            className="text-[#104bdd] font-semibold text-[14px] hover:underline"
+          >
+            Edit
+          </button>
+          <button 
+            onClick={() => handleDeleteCustomer(index)}
+            className="text-[#dc2626] font-semibold text-[14px] hover:underline"
+          >
+            Hapus
+          </button>
+        </div>
+      )
+    }
+  ];
 
   return (
     <div className="flex flex-col items-start px-8 md:px-[160px] py-[16px] w-full h-full">
@@ -78,54 +145,7 @@ export default function CustomerList() {
             </div>
           </div>
         ) : (
-          /* Table State */
-          <div className="w-full mt-2 border-t border-[rgba(37,37,37,0.13)]">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-[rgba(37,37,37,0.13)]">
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Nama Pelanggan</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Nomor Handphone</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525]">Email</th>
-                  <th className="py-[12px] px-[8px] text-[14px] font-semibold text-[#252525] text-right">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {customers.map((cust, idx) => (
-                  <tr key={idx} className="border-b border-[#f2f2f2] hover:bg-gray-50 transition-colors">
-                    <td className="py-[12px] px-[8px]">
-                      <span className="text-[14px] font-normal text-[#252525]">{cust.name || '-'}</span>
-                    </td>
-                    <td className="py-[12px] px-[8px]">
-                      <span className="text-[14px] font-normal text-[#4a4a4a]">{cust.phone}</span>
-                    </td>
-                    <td className="py-[12px] px-[8px]">
-                      <span className="text-[14px] font-normal text-[#4a4a4a]">{cust.email || '-'}</span>
-                    </td>
-                    <td className="py-[12px] px-[8px] text-right">
-                      <div className="flex items-center justify-end gap-3">
-                        <button 
-                          onClick={() => {
-                            setEditingCustomer(cust);
-                            setEditingIndex(idx);
-                            setIsModalOpen(true);
-                          }}
-                          className="text-[#104bdd] font-semibold text-[14px] hover:underline"
-                        >
-                          Edit
-                        </button>
-                        <button 
-                          onClick={() => handleDeleteCustomer(idx)}
-                          className="text-[#dc2626] font-semibold text-[14px] hover:underline"
-                        >
-                          Hapus
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <DataTable columns={columns} data={customers} itemsPerPage={10} />
         )}
       </div>
 
