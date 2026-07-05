@@ -17,7 +17,7 @@ export default function ChatpayLayout() {
       <div className="bg-white content-stretch flex flex-col items-start px-[160px] py-[16px] relative shrink-0 w-full">
         <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
           <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[36px] not-italic relative shrink-0 text-[#252525] text-[24px] whitespace-nowrap">
-            Payment Chat AstraPay
+            Payment Chat
           </p>
         </div>
         <div className="bg-white content-stretch flex h-[86px] items-start py-[16px] relative shrink-0 w-full">
