@@ -77,31 +77,30 @@ router.post('/generate-link', async (req, res) => {
         
         const b2bToken = tokenData.accessToken;
 
-        // 2. Call Account Binding
-        const bindingRelativeUrl = '/snap-service/snap/v1.0/registration-account-binding';
-        const bindingUrl = `https://sandbox.astrapay.com${bindingRelativeUrl}`;
+        // 2. Call Direct Debit Payment to get Webview URL
+        const paymentRelativeUrl = '/merchant-service/snap/v1.0/debit/payment-host-to-host';
+        const paymentUrl = `https://sandbox.astrapay.com${paymentRelativeUrl}`;
         const method = 'POST';
         const timestamp = getSnapTimestamp();
         
+        // Ensure amount has 2 decimal places as required
+        const amountValue = req.body.amount ? Number(req.body.amount).toFixed(2) : "10000.00";
+        
         const requestBody = {
-            "merchantId": merchantId,
+            "partnerReferenceNo": "TRX" + Date.now(),
+            "amount": {
+                "value": amountValue,
+                "currency": "IDR"
+            },
             "additionalInfo": {
-                "finishBindingUrl": "https://www.astrapay.com", // Redirect to AstraPay homepage after success
-                "externalUid": `Nakama_${Date.now()}`,
-                "name": name || "AstraPay Customer",
-                "email": email || "customer@email.com"
+                "description": `Tagihan untuk ${name || 'Customer'}`
             }
         };
 
-        if (phone) {
-            // Remove non-numeric characters for phoneNo
-            requestBody.phoneNo = phone.replace(/[^0-9]/g, '');
-        }
-        
-        const signatureService = generateSignatureService(method, bindingRelativeUrl, b2bToken, requestBody, timestamp, clientSecret);
+        const signatureService = generateSignatureService(method, paymentRelativeUrl, b2bToken, requestBody, timestamp, clientSecret);
         const externalId = generateExternalId();
         
-        const response = await fetch(bindingUrl, {
+        const response = await fetch(paymentUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,22 +109,51 @@ router.post('/generate-link', async (req, res) => {
                 'X-SIGNATURE': signatureService,
                 'X-PARTNER-ID': clientId,
                 'X-EXTERNAL-ID': externalId,
-                'X-DEVICE-ID': 'DeviceSandboxNakama01',
-                'CHANNEL-ID': '01207'
+                'CHANNEL-ID': '00854'
             },
             body: JSON.stringify(requestBody)
         });
         
         const data = await response.json();
-        if (data.redirectUrl) {
-            res.json({ success: true, redirectUrl: data.redirectUrl });
+        
+        // If webRedirectUrl is provided, it's successful!
+        if (data.webRedirectUrl) {
+            res.json({ success: true, redirectUrl: data.webRedirectUrl });
         } else {
-            res.status(500).json({ success: false, error: 'Failed to generate redirect URL', details: data });
+            console.error("AstraPay Response Error:", data);
+            res.status(500).json({ success: false, error: 'Failed to generate payment URL', details: data });
         }
     } catch (e) {
-        console.error('Error generating AstraPay link:', e);
+        console.error('Error generating AstraPay payment link:', e);
         res.status(500).json({ success: false, error: e.message });
     }
+});
+
+// Tahap 1: Endpoint untuk menangkap Callback/Redirect dari AstraPay
+router.get('/callback', (req, res) => {
+    console.log('============= ASTRAPAY GET CALLBACK RECEIVED =============');
+    console.log('QUERY:', req.query);
+    console.log('BODY:', req.body);
+    console.log('==========================================================');
+    res.send(`
+        <html>
+            <head><title>Binding Sukses!</title></head>
+            <body style="font-family: sans-serif; text-align: center; margin-top: 50px;">
+                <h1 style="color: green;">🎉 Otorisasi Selesai!</h1>
+                <p>Silakan kembali ke terminal/IDE Anda untuk mengecek log.</p>
+                <p>Data yang ditangkap:</p>
+                <pre style="text-align: left; background: #eee; padding: 20px; display: inline-block;">${JSON.stringify(req.query, null, 2)}</pre>
+            </body>
+        </html>
+    `);
+});
+
+router.post('/callback', (req, res) => {
+    console.log('============= ASTRAPAY POST CALLBACK RECEIVED =============');
+    console.log('QUERY:', req.query);
+    console.log('BODY:', req.body);
+    console.log('===========================================================');
+    res.json({ status: "OK", message: "Callback received" });
 });
 
 module.exports = router;
