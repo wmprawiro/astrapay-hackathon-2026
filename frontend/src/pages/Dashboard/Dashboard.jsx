@@ -45,7 +45,7 @@ export default function Dashboard() {
                 Nakama
               </p>
               <p className="font-['Inter:Regular'] font-normal relative shrink-0" data-node-id="33:1900">
-                pakprengki@nakama.dev
+                prengkytampan@gmail.com
               </p>
             </div>
             <div className="content-stretch flex items-center justify-center pl-[24px] relative shrink-0" data-node-id="33:1901" data-name="Dropdown Icon">

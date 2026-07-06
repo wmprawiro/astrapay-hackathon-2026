@@ -164,7 +164,7 @@ export default function BindingModal({ onClose }) {
                   </div>
                 </div>
               </div>
-              <div className="h-[232.406px] relative shrink-0 w-[232.175px] flex items-center justify-center" data-node-id="39:2668" data-name="Vector">
+              <div className="relative shrink-0 flex flex-col items-center justify-center" data-node-id="39:2668" data-name="Vector">
                 {qrCode ? (
                   <QRCodeCanvas 
                     value={qrCode} 
@@ -178,10 +178,21 @@ export default function BindingModal({ onClose }) {
                     }}
                   />
                 ) : (
-                  <div className="animate-pulse bg-gray-200 size-full rounded-[12px] flex items-center justify-center text-sm text-gray-500 text-center px-4">
+                  <div className="animate-pulse bg-gray-200 w-[232px] h-[232px] rounded-[12px] flex items-center justify-center text-sm text-gray-500 text-center px-4">
                     Memuat QR Code...
                   </div>
                 )}
+                
+                {/* Mock Button for Hackathon */}
+                <button 
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('chatpay_login', { detail: '6281234567890' }));
+                    if (onClose) onClose();
+                  }}
+                  className="mt-6 px-4 py-2 border border-[#104bdd] text-[#104bdd] font-semibold text-[13px] rounded-[6px] hover:bg-blue-50 transition-colors w-full"
+                >
+                  Simulasikan Scan
+                </button>
               </div>
             </div>
           </div>

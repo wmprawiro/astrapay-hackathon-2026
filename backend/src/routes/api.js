@@ -14,10 +14,16 @@ function readDB() {
             fs.writeFileSync(dbPath, JSON.stringify({ customers: [], templates: [], transactions: [] }, null, 2));
         }
         const data = fs.readFileSync(dbPath, 'utf8');
-        return JSON.parse(data);
+        const parsed = JSON.parse(data);
+        return {
+            customers: parsed.customers || [],
+            templates: parsed.templates || [],
+            transactions: parsed.transactions || [],
+            quick_replies: parsed.quick_replies || []
+        };
     } catch (e) {
         console.error("Error reading db.json", e);
-        return { customers: [], templates: [], transactions: [] };
+        return { customers: [], templates: [], transactions: [], quick_replies: [] };
     }
 }
 
@@ -72,6 +78,19 @@ router.post('/transactions', (req, res) => {
         db.transactions.push(newTx);
     }
     
+    writeDB(db);
+    res.json({ success: true });
+});
+
+// Quick Replies
+router.get('/quick-replies', (req, res) => {
+    const db = readDB();
+    res.json(db.quick_replies || []);
+});
+
+router.post('/quick-replies', (req, res) => {
+    const db = readDB();
+    db.quick_replies = req.body.quick_replies || db.quick_replies || [];
     writeDB(db);
     res.json({ success: true });
 });

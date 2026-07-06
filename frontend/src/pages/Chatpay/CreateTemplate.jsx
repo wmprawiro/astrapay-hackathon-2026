@@ -18,6 +18,7 @@ export default function CreateTemplate() {
 
   const [buttons, setButtons] = useState([]); // Array of { type: 'QUICK_REPLY' | 'URL', text: '', url: '' }
   const [variableValues, setVariableValues] = useState({}); // { '1': 'value', '2': 'value' }
+  const [includePaymentLink, setIncludePaymentLink] = useState(false);
 
   // Load existing template data when editing
   React.useEffect(() => {
@@ -36,6 +37,7 @@ export default function CreateTemplate() {
             setFooterText(tmpl.footerText || '');
             setButtons(tmpl.buttons || []);
             setVariableValues(tmpl.variableValues || {});
+            setIncludePaymentLink(tmpl.includePaymentLink || false);
           }
         })
         .catch(err => console.error(err));
@@ -87,6 +89,7 @@ export default function CreateTemplate() {
       footerText,
       buttons,
       variableValues,
+      includePaymentLink,
     };
 
     try {
@@ -273,6 +276,19 @@ export default function CreateTemplate() {
               )}
 
               <div className="flex flex-col w-full gap-3">
+                <label className="text-[14px] font-semibold text-[#252525]">Tautan Pembayaran AstraPay</label>
+                <label className="flex items-center gap-2 cursor-pointer w-fit p-3 border border-[#e0e0e0] rounded-[8px] bg-white hover:bg-gray-50 transition-colors">
+                  <input 
+                    type="checkbox" 
+                    checked={includePaymentLink}
+                    onChange={(e) => setIncludePaymentLink(e.target.checked)}
+                    className="w-4 h-4 text-[#104bdd] rounded focus:ring-[#104bdd] border-gray-300"
+                  />
+                  <span className="text-[13px] text-[#252525]">Sisipkan otomatis Tautan Tagihan AstraPay di akhir pesan</span>
+                </label>
+              </div>
+
+              <div className="flex flex-col w-full gap-3">
                 <label className="text-[14px] font-semibold text-[#252525]">Footer <span className="text-gray-400 font-normal">(Opsional)</span></label>
                 <input
                   type="text"
@@ -313,6 +329,12 @@ export default function CreateTemplate() {
 
                   <div className="text-[14.2px] text-[#252525] whitespace-pre-wrap leading-[1.35]" style={{ overflowWrap: 'break-word', wordBreak: 'break-word', hyphens: 'auto' }}>
                     {bodyText ? renderPreviewBody(bodyText) : 'Isi pesan akan tampil di sini'}
+                    {includePaymentLink && (
+                      <>
+                        <br /><br />
+                        🔗 Bayar via AstraPay: https://sandbox.astrapay.com/...
+                      </>
+                    )}
                   </div>
 
                   <div className="flex items-end justify-between mt-1 pt-1 gap-2">

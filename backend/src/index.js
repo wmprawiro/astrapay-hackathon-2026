@@ -3,7 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { Server } = require('socket.io');
 const { createServer } = require('http');
-const { startWhatsApp, getSock, getCurrentQR } = require('./whatsapp');
+const { startWhatsApp, getClient, getCurrentQR, logoutClient } = require('./whatsapp');
 
 dotenv.config();
 
@@ -35,9 +35,9 @@ io.on('connection', (socket) => {
     console.log('Frontend connected via WebSocket:', socket.id);
     
     // Check current state and emit instantly
-    const sock = getSock();
-    if (sock && sock.user && sock.user.id) {
-        let rawNumber = sock.user.id.split(':')[0].split('@')[0];
+    const client = getClient();
+    if (client && client.info && client.info.wid) {
+        let rawNumber = client.info.wid.user;
         socket.emit('authenticated', { message: 'Already connected', number: rawNumber });
     } else {
         const qr = getCurrentQR();
@@ -46,12 +46,9 @@ io.on('connection', (socket) => {
         }
     }
 
-    socket.on('logout', () => {
+    socket.on('logout', async () => {
         console.log('Frontend requested logout');
-        const sock = getSock();
-        if (sock) {
-            sock.logout('Frontend requested logout');
-        }
+        await logoutClient();
     });
 
     socket.on('disconnect', () => {

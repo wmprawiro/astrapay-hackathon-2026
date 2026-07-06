@@ -7,6 +7,38 @@ const imgMerchantAstrapay1 = "/assets/eff943144ac69ca9d733f3e2d7df8569522b3e29.p
 
 export default function ChatpayDashboard({ isLoggedIn }) {
   const [isBindingModalOpen, setIsBindingModalOpen] = useState(false);
+  const [metrics, setMetrics] = useState({ customers: 0, activeBills: 0, transactions: 0 });
+
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      fetchMetrics();
+    }
+  }, [isLoggedIn]);
+
+  const fetchMetrics = async () => {
+    try {
+      const [custRes, txRes] = await Promise.all([
+        fetch('http://localhost:3000/api/data/customers'),
+        fetch('http://localhost:3000/api/data/transactions')
+      ]);
+      const customers = await custRes.json();
+      const transactions = await txRes.json();
+
+      let activeBillsTotal = 0;
+      transactions.forEach(tx => {
+        // Asumsi tagihan aktif adalah nominal dari tagihan yang ada di riwayat
+        activeBillsTotal += Number(tx.amount || 0);
+      });
+
+      setMetrics({
+        customers: customers.length || 0,
+        activeBills: activeBillsTotal,
+        transactions: transactions.length || 0
+      });
+    } catch (e) {
+      console.error('Failed to fetch dashboard metrics', e);
+    }
+  };
 
   return (
     <>
@@ -16,7 +48,7 @@ export default function ChatpayDashboard({ isLoggedIn }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             <DashboardStatCard 
               title="Total Pelanggan" 
-              value="0" 
+              value={metrics.customers.toString()} 
               colorHex="#104bdd"
               iconSvg={
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -25,8 +57,8 @@ export default function ChatpayDashboard({ isLoggedIn }) {
               }
             />
             <DashboardStatCard 
-              title="Tagihan Aktif" 
-              value="Rp 0" 
+              title="Total Tagihan" 
+              value={`Rp ${metrics.activeBills.toLocaleString('id-ID')}`} 
               colorHex="#eab308"
               iconSvg={
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -36,7 +68,7 @@ export default function ChatpayDashboard({ isLoggedIn }) {
             />
             <DashboardStatCard 
               title="Total Transaksi" 
-              value="0" 
+              value={metrics.transactions.toString()} 
               colorHex="#22c55e"
               iconSvg={
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

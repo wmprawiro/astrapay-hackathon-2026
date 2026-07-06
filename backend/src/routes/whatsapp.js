@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getSock } = require('../whatsapp');
+const { getClient } = require('../whatsapp');
 
 router.post('/send', async (req, res) => {
     try {
@@ -10,8 +10,8 @@ router.post('/send', async (req, res) => {
             return res.status(400).json({ success: false, error: 'Messages array is required' });
         }
 
-        const sock = getSock();
-        if (!sock) {
+        const client = getClient();
+        if (!client) {
             return res.status(503).json({ success: false, error: 'WhatsApp service not ready' });
         }
 
@@ -25,25 +25,26 @@ router.post('/send', async (req, res) => {
                 if (phone.startsWith('0')) {
                     phone = '62' + phone.substring(1);
                 }
-                const jid = `${phone}@s.whatsapp.net`;
+                const jid = `${phone}@c.us`;
 
                 // 1. Simulate "Typing..." state for a realistic human feel
-                await sock.sendPresenceUpdate('composing', jid);
+                const chat = await client.getChatById(jid);
+                await chat.sendStateTyping();
                 
                 // Random typing duration between 4 to 8 seconds (4000ms to 8000ms)
                 const typingDelay = Math.floor(Math.random() * 4000) + 4000;
                 await new Promise(resolve => setTimeout(resolve, typingDelay));
 
                 // Send message
-                const sentMsg = await sock.sendMessage(jid, { text: msg.text });
+                const sentMsg = await client.sendMessage(jid, msg.text);
                 
                 // 2. Stop "Typing..." state
-                await sock.sendPresenceUpdate('paused', jid);
+                await chat.clearState();
                 
                 results.push({
                     phone: msg.phone,
                     status: 'success',
-                    id: sentMsg?.key?.id
+                    id: sentMsg?.id?._serialized
                 });
                 
                 // 3. Random delay before sending the NEXT message to prevent bulk-spam flagging

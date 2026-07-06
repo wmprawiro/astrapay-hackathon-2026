@@ -5,7 +5,7 @@ const imgItalicText = "/assets/354d1ce42bfebc06a7f902f70beb5618c05714a6.png"; //
 export default function AddQuickReplyModal({ onClose, onSave, initialData }) {
   const [shortcut, setShortcut] = useState(initialData?.shortcut || '');
   const [message, setMessage] = useState(initialData?.message || '');
-  const [keywords, setKeywords] = useState(initialData?.keywords || '');
+  const [keywords, setKeywords] = useState(initialData?.keywords ? initialData.keywords.join(', ') : '');
   const [error, setError] = useState('');
 
   const handleSave = () => {
@@ -17,14 +17,20 @@ export default function AddQuickReplyModal({ onClose, onSave, initialData }) {
       setError('Pesan balasan wajib diisi');
       return;
     }
-    
+    // Validate keywords
+    const parsedKeywords = keywords.split(',').map(k => k.trim()).filter(k => k);
+    if (parsedKeywords.length > 3) {
+      setError('Maksimal hanya diperbolehkan 3 kata kunci.');
+      return;
+    }
+
     // Auto format shortcut (no spaces, lowercase)
     const cleanShortcut = '/' + shortcut.replace(/[^a-zA-Z0-9_-]/g, '').toLowerCase();
 
     onSave({ 
       shortcut: cleanShortcut, 
       message, 
-      keywords: keywords.split(',').map(k => k.trim()).filter(k => k) 
+      keywords: parsedKeywords 
     });
   };
 
@@ -101,7 +107,7 @@ export default function AddQuickReplyModal({ onClose, onSave, initialData }) {
               <label className="text-[14px] font-semibold text-[#252525]">Kata Kunci (Opsional)</label>
               <input 
                 type="text" 
-                value={typeof keywords === 'string' ? keywords : keywords.join(', ')}
+                value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="misal: lokasi, alamat, peta"
                 className="w-full border border-[#e0e0e0] rounded-[8px] px-[16px] py-[12px] text-[14px] text-[#252525] outline-none focus:border-[#104bdd] transition-colors"

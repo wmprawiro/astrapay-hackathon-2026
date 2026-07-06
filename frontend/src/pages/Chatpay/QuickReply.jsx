@@ -18,15 +18,35 @@ export default function QuickReply() {
   const [editingIndex, setEditingIndex] = useState(null);
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('chatpay_quick_replies') || 'null');
-    if (stored) {
-      setQuickReplies(stored);
-    } else {
-      // Load defaults if empty
-      setQuickReplies(DEFAULT_QUICK_REPLIES);
-      localStorage.setItem('chatpay_quick_replies', JSON.stringify(DEFAULT_QUICK_REPLIES));
-    }
+    fetchQuickReplies();
   }, []);
+
+  const fetchQuickReplies = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/data/quick-replies');
+      const data = await response.json();
+      if (data && data.length > 0) {
+        setQuickReplies(data);
+      } else {
+        setQuickReplies(DEFAULT_QUICK_REPLIES);
+        saveToBackend(DEFAULT_QUICK_REPLIES);
+      }
+    } catch (error) {
+      console.error("Failed to fetch quick replies", error);
+    }
+  };
+
+  const saveToBackend = async (data) => {
+    try {
+      await fetch('http://localhost:3000/api/data/quick-replies', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quick_replies: data })
+      });
+    } catch (error) {
+      console.error("Failed to save quick replies", error);
+    }
+  };
 
   const handleSave = (newReply) => {
     let updated = [...quickReplies];
@@ -36,14 +56,14 @@ export default function QuickReply() {
       updated.push(newReply);
     }
     setQuickReplies(updated);
-    localStorage.setItem('chatpay_quick_replies', JSON.stringify(updated));
+    saveToBackend(updated);
     closeModal();
   };
 
   const handleDelete = (indexToDelete) => {
     const updated = quickReplies.filter((_, i) => i !== indexToDelete);
     setQuickReplies(updated);
-    localStorage.setItem('chatpay_quick_replies', JSON.stringify(updated));
+    saveToBackend(updated);
   };
 
   const closeModal = () => {

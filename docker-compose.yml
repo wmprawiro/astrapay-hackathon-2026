@@ -10,7 +10,7 @@ services:
       - "3000:3000"
     volumes:
       # Persist WhatsApp session
-      - ./backend/auth_info_baileys:/app/auth_info_baileys
+      - ./backend/.wwebjs_auth:/app/.wwebjs_auth
       # Persist Application Data (Customers, Templates, Transactions)
       - ./backend/data:/app/data
       # Make sure the private key is passed

@@ -42,7 +42,7 @@ export default function TopNavigation({ activeTab = 'beranda' }) {
               Nakama
             </p>
             <p className="font-normal relative shrink-0">
-              pakprengki@nakama.dev
+              prengkytampan@gmail.com
             </p>
           </div>
           <div className="content-stretch flex items-center justify-center pl-[24px] relative shrink-0">
